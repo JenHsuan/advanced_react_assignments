@@ -1,0 +1,7 @@
+.headerUp {
+  transform: translateY(0);
+}
+
+.headerDown {
+  transform: translateY(-200px);
+}
