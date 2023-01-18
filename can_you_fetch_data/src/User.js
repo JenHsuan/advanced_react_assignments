@@ -1,30 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import DataFetcher from './DataFetcher';
 
 const User = () => {
-  const [users, setUsers] = useState([]);
-
-  const fetchData = () => {
-    fetch("https://randomuser.me/api/?results=10")
-      .then(res => res.json())
-      .then(res => setUsers(res.results))
-  };
+  const render = () => {
+    return <h1>User data</h1>
+  }
     
-  useEffect(() => {
-    fetchData();
-  }, []);
-    
-  return Object.keys(users).length > 0 ? (
-    <div>
-      <h1>User data</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.email}>{user.name.first}</li>
-        ))}
-      </ul>
-    </div>
-  ) : (
-    <h1>Data pending...</h1>
-  );
+  return (
+    <DataFetcher
+      url = "https://randomuser.me/api/?results=10"
+      render={() =>render()}/>
+  )
 }
 
 export default User
