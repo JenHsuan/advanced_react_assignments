@@ -1,27 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
+import Admin from './Admin';
+import User from './User';
+import Customer from './Customer';
 
 function App() {
-  const [user, setUser] = React.useState([]);
-
-  const fetchData = () => {
-    fetch("https://randomuser.me/api/?results=1")
-      .then(res => res.json())
-      .then(res => setUser(res))
-  };
-
-  React.useEffect(() => {
-    fetchData();
-  }, []);
-
-  return Object.keys(user).length > 0 ? (
-    <div style={{padding: "40px"}}>
-      <h1>Customer data</h1>
-      <h2>Name:{user.results[0].name.first}</h2>
-      <img src={user.results[0].picture.large}/>
-    </div>
-  ) : (
-    <h1>Data pending...</h1>
-  );
+  return (
+    <>
+      <Admin></Admin>
+      <User></User>
+      <Customer></Customer>
+    </>
+  )
 }
 
 export default App;
